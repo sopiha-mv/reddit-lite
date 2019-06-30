@@ -9,13 +9,17 @@ export const REFRESH_POSTS_REQUEST = 'REFRESH_POSTS_REQUEST';
 export const REFRESH_POSTS_SUCCESS = 'REFRESH_POSTS_SUCCESS';
 export const REFRESH_POSTS_FAILURE = 'REFRESH_POSTS_FAILURE';
 
-export const redditUrl = 'https://www.reddit.com';
-export const subredditUrl = '/r/vancouver';
-const postLimit = 25;
+export const SET_LOADED = 'SET_LOADED';
+
+export const subredditUrl = 'https://www.reddit.com/r/vancouver';
+
+export const setLoaded = (isLoaded) => ({
+    type: SET_LOADED,
+    payload: isLoaded
+})
 
 export const getPosts = (query = {}) => {
-    query.limit = postLimit - 1;
-    let requestUrl = redditUrl + subredditUrl + '.json?' + objectToQuery(query);
+    let requestUrl = subredditUrl + '.json?' + objectToQuery(query);
     return {
     [RSAA]: {
         types: [

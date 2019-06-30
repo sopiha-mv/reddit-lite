@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render correctly post component 1`] = `
+<div
+  className="media mb-3 border align-items-stretch"
+>
+  <img
+    className="align-self-start"
+    src="mockThumbnail"
+  />
+  <div
+    className="media-body pt-3 pr-3 pl-3"
+  >
+    <div
+      className="d-flex flex-column h-100"
+    >
+      <h5
+        className="mt-0"
+      >
+        mockTitle
+      </h5>
+      <div
+        className="mt-auto d-flex justify-content-between"
+      >
+        <p>
+          mockAuthor
+          , 
+          mockTime
+        </p>
+        <a
+          href="mockPostLink"
+        >
+          read more
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;

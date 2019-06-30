@@ -1,7 +1,9 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
-import { getPosts, refreshPosts } from '../actions/postActions.js';
+import { getPosts, refreshPosts, setLoaded } from '../actions/postActions.js';
+import { redditUrl, subredditUrl } from '../actions/postActions.js';
 import PostList from './PostList.jsx';
+import Navigation from './Navigation.jsx';
 
 class App extends Component {
 	constructor(props) {
@@ -9,11 +11,13 @@ class App extends Component {
 	}
 
 	getPrevPosts = () => {
+		this.props.setLoaded(false);
 		let firstPost = this.props.post.data.children[0];
 		this.props.getPosts({before: firstPost.data.name});
 	};
 
 	getNextPosts = () => {
+		this.props.setLoaded(false);
 		let lastPost = this.props.post.data.children.slice(-1)[0];
 		this.props.getPosts({after: lastPost.data.name});
 	};
@@ -21,19 +25,21 @@ class App extends Component {
 	render() {
 		return (
 			<div className={'pb-3'}>
-				<PostList list={this.props.post.data.children} />
-				<ul className={'pagination d-flex justify-content-center'}>
-					<li className={'page-item'}>
-						<a href={'#'} className={'page-link'} onClick={() => this.getPrevPosts()}>
-							Previous
-						</a>
-					</li>
-					<li className={'page-item'}>
-						<a href={'#'} className={'page-link'} onClick={() => this.getNextPosts()}>
-							Next
-						</a>
-					</li>
-				</ul>
+				<Navigation
+					getPrev={this.getPrevPosts}
+					getNext={this.getNextPosts}
+				/>
+
+				<main style={{opacity: this.props.post.isLoaded ? '1' : '0.5'}}>
+					<PostList 
+						list={this.props.post.data.children}
+					/>
+				</main>
+				
+				<Navigation
+					getPrev={this.getPrevPosts}
+					getNext={this.getNextPosts}
+				/>
 			</div>
 		);
 	}
@@ -53,6 +59,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
 	getPosts: (callData) => dispatch(getPosts(callData)),
 	refreshPosts: (callData) => dispatch(refreshPosts(callData)),
+	setLoaded: (callData) => dispatch(setLoaded(callData)),
 });
 
 export default connect(

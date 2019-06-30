@@ -11,10 +11,8 @@ const PostItem = props => (
 			<div className={'d-flex flex-column h-100'}>
 				<h5 className={'mt-0'}>{props.title}</h5>
 				<div className={'mt-auto d-flex justify-content-between'}>
-					<p>
-						<a href={props.authorUrl}>{props.author}</a>, {props.time}
-					</p>
-					<a href={props.postLink}>more</a>
+					<p>{props.author}, {props.time}</p>
+					<a href={props.postLink}>read more</a>
 				</div>
 			</div>
 		</div>
@@ -22,13 +20,11 @@ const PostItem = props => (
 );
 
 PostItem.propTypes = {
-	name: PropTypes.string,
 	title: PropTypes.string,
 	postLink: PropTypes.string,
 	thumbnail: PropTypes.string,
 	author: PropTypes.string,
 	time: PropTypes.string,
-	commentLink: PropTypes.string,
 };
 
 export default PostItem;

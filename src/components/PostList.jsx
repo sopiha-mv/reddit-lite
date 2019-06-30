@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PostItem from './PostItem.jsx';
-import { redditUrl } from '../actions/postActions.js';
 import { timeConverter } from '../common/timeConverter.js';
 
 const PostList = ({ list }) => (
@@ -12,12 +11,10 @@ const PostList = ({ list }) => (
 				return <PostItem
 					key={data.id}
 					title={data.title}
-					postLink={redditUrl + data.permalink}
+					postLink={'https://www.reddit.com' + data.permalink}
 					thumbnail={data.thumbnail}
 					author={data.author}
-					authorUrl={redditUrl + '/user/' + data.author}
 					time={timeConverter(data.created_utc)}
-					commentLink={redditUrl + data.permalink}
 				/>
 			})
 		}
