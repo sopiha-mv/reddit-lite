@@ -3,7 +3,7 @@ const objectToQuery = (obj, prefix) => {
         p;
     for (p in obj) {
         if (Object.prototype.hasOwnProperty.call(obj, p)) {
-            var k = prefix ? prefix + '[' + p + ']' : p,
+            let k = prefix ? prefix + '[' + p + ']' : p,
                 v = obj[p];
             str.push((v !== null && typeof v === 'object') ?
                 objectToQuery(v, k) :
