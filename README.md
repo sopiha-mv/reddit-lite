@@ -1,6 +1,10 @@
 # Reddit-Lite
 
-It is reddit viewer that displays a list of posts in "vancouver" subreddit.
+It is a reddit viewer that displays a list of posts in "vancouver" subreddit.
+
+## Getting Started
+
+First of all, thank you for your time and consideration. I look forward to hearing from you.
 
 ### Installing
 
@@ -54,7 +58,3 @@ npm run watch    #start webpack dev server
 ## Authors
 
 * **Mykola Sopiha** - *mykola.sopiha@dresslerconsulting.com*
-
-## Acknowledgments
-
-First, thank you for your time and consideration. I look forward to hearing from you.
